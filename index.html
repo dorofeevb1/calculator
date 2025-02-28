@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Заголовок -->
+    <header class="header">
+        <h1>Калькулятор</h1>
+    </header>
+
+    <!-- Основной контейнер -->
+    <div class="container">
+        <button id="openModalBtn">Открыть Модальное Окно</button>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div>
+                <span class="close">&times;</span>
+                <h2>Калькулятор</h2>
+            </div>
+
+            <!-- Шаг 1: Добавление товаров -->
+            <div id="add-items-section" class="section">
+                <h3><span style="color: #60598C;">Шаг 1:</span> Добавьте товары или выберите услуги</h3>
+                <select name="orderNumber" id="orderNumber" placeholder="Начните вводить номер заказа">
+                    <option value="orderNumber">Номер заказа</option>
+                </select>
+            </div>
+           
+            <!-- Контейнер для динамического добавления товаров -->
+            <div id="items-container"></div>
+
+            <button id="addItemBtn">Добавить товар</button>
+            
+            <!-- Секция результатов -->
+            <div id="results-section" class="result">
+                <h3>Результаты подсчета</h3>
+                <div class="result-section">
+                    <div class="result-item">
+                        <label for="totalWeight">Общий вес</label>
+                        <input type="text" id="totalWeight" placeholder="Общий вес" readonly>
+                    </div>
+                    <div class="result-item">
+                        <label for="totalVolume">Общий объем</label>
+                        <input type="text" id="totalVolume" placeholder="Общий объем" readonly>
+                    </div>
+                    <div class="result-item">
+                        <label for="totalDensity">Плотность товаров</label>
+                        <input type="text" id="totalDensity" placeholder="Плотность товаров" readonly>
+                    </div>
+                    <div class="result-item">
+                        <label for="totalCost">Общая стоимость, $</label>
+                        <input type="text" id="totalCost" placeholder="Общая стоимость, $" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Детали упаковки -->
+            <div id="packaging-section" class="section">
+                <h3>Укажите упаковку</h3>
+                <select class="select-input" id="packagingSelect">
+                    <option value="box">Коробка</option>
+                    <option value="pallet">Паллета</option>
+                </select>
+                <button class="packing-btn" id="emptyBoxBtn">Пупырка</button>
+                <button class="packing-btn" id="palletBtn">Паллета</button>
+            </div>
+
+            <!-- Перерасчет с учетом упаковки -->
+            <div id="transport-data-section" class="section">
+                <h3>Перерасчет с учетом упаковки</h3>
+                <div class="section-transport">
+                    <div class="transport-item">
+                        <label for="packagedWeight">Итого вес</label>
+                        <input type="text" id="packagedWeight" placeholder="Итоговый вес, кг" readonly>
+                    </div>
+                    <div class="transport-item">
+                        <label for="packagedVolume">Итоговый объем</label>
+                        <input type="text" id="packagedVolume" placeholder="Итоговый объем, м³" readonly>
+                    </div>
+                    <div class="transport-item">
+                        <label for="packagedDensity">Итоговая плотность, кг/м³</label>
+                        <input type="text" id="packagedDensity" placeholder="Итоговая плотность, кг/м³" readonly>
+                    </div>
+                    <div class="transport-item">
+                        <label for="insurancePercentage">Страховка, %</label>
+                        <input type="text" id="insurancePercentage" placeholder="Страховка, %" value="1">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Детализация предварительного расчета стоимости перевозки -->
+            <div class="shipping-cost-details">
+                <h1>Детализация предварительного расчета стоимости перевозки</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>10-15 дней</th>
+                            <th>18-25 дней</th>
+                            <th>20-30 дней</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ставка за кг</td>
+                            <td>2.2 $</td>
+                            <td>2.2 $</td>
+                            <td>2.2 $</td>
+                        </tr>
+                        <tr>
+                            <td>Стоимость доставки</td>
+                            <td>200.2 $</td>
+                            <td>200.2 $</td>
+                            <td>200.2 $</td>
+                        </tr>
+                        <tr>
+                            <td>Упаковка</td>
+                            <td>68.0 $</td>
+                            <td>68.0 $</td>
+                            <td>68.0 $</td>
+                        </tr>
+                        <tr>
+                            <td>Разгрузка</td>
+                            <td>72.0 $</td>
+                            <td>72.0 $</td>
+                            <td>72.0 $</td>
+                        </tr>
+                        <tr>
+                            <td>Страховка</td>
+                            <td>60.0 $</td>
+                            <td>60.0 $</td>
+                            <td>60.0 $</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Кнопка для завершения заказа -->
+            <button class="final-button" id="finalizeBtn">Оформить заказ</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
